@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Wheeled-WBC: Manipulation-Oriented Whole-Body Control for Wheeled Humanoid Robots. A unified interface for retargeting, balanced motion learning, and dextrous mobile manipulation.">
+  <meta name="theme-color" content="#faf9f6">
+  <meta property="og:title" content="Wheeled-WBC — Whole-body control for mobile manipulation">
+  <meta property="og:description" content="From human motion to dextrous mobile manipulation on wheeled humanoid robots.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/teaser.webp">
+  <title>Wheeled-WBC | Manipulation-Oriented Whole-Body Control</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="#" aria-label="Wheeled-WBC home"><span class="brand-icon" aria-hidden="true">W</span>Wheeled-WBC</a>
+    <nav aria-label="Main navigation">
+      <a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a><a href="#demos">Demos</a>
+    </nav>
+    <a class="header-link" href="#resources">Resources <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main">
+    <section class="hero section-width" aria-labelledby="hero-title">
+      <p class="eyebrow"><span class="status-dot"></span> Whole-body control · Mobile manipulation</p>
+      <h1 id="hero-title">Wheeled<span>-</span>WBC</h1>
+      <p class="hero-subtitle">Manipulation-Oriented Whole-Body Control<br class="desktop-break"> for Wheeled Humanoid Robots</p>
+      <p class="hero-description">From human motion to dextrous mobile manipulation.<br>One controller for coordinated hands, body, and base.</p>
+      <p class="authors">Wheeled-WBC project <span>·</span> Author information forthcoming</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#method">Explore the method <span aria-hidden="true">↓</span></a>
+        <span class="button unavailable">Paper <span class="pill">Coming soon</span></span>
+        <span class="button unavailable">Code <span class="pill">Coming soon</span></span>
+      </div>
+      <figure class="hero-figure">
+        <a class="zoomable" href="assets/teaser.webp" data-figure aria-label="Enlarge the Wheeled-WBC overview"><img src="assets/teaser.webp" alt="Wheeled-WBC combines retargeting, manipulation coverage, and tracking stability for teleoperation, text-to-motion and long-horizon tasks." width="2090" height="1800" fetchpriority="high"></a>
+        <figcaption><span>HUMAN MOTION → ROBOT ACTION</span> Whole-body coordination for everyday manipulation. <span class="zoom-hint">Click to enlarge ↗</span></figcaption>
+      </figure>
+      <div class="metrics" aria-label="Selected results from the manuscript">
+        <div><strong>210 <small>hours</small></strong><span>Human motion for training</span></div>
+        <div><strong>92.36<small>%</small></strong><span>Unseen-motion success rate</span></div>
+        <div><strong>0.02 <small>m</small></strong><span>Base average displacement error</span></div>
+      </div>
+      <p class="metric-note">Cross-embodiment evaluation; each method uses its own robot and retargeting pipeline.</p>
+    </section>
+
+    <section id="overview" class="section-width text-section">
+      <div class="section-heading"><p class="eyebrow">01 / Overview</p><h2>Moving and manipulating,<br>as one whole-body system.</h2></div>
+      <div class="abstract-copy"><p>Wheeled humanoid robots bring efficient mobility and human-like upper-body dexterity to manipulation. Turning human motion into precise robot behavior requires addressing embodiment gaps, uneven manipulation coverage, and tracking stability.</p><p><strong>Wheeled-WBC</strong> learns a unified controller from approximately 210 hours of human motion. It combines decoupled retargeting, task-space data organization, and manipulation-oriented tracking, then distills specialist teachers into a Transformer policy.</p><p>On Sharpa North, the framework supports zero-shot tracking of unseen motion-capture and text-generated references, teleoperation across sensing devices, and demonstration collection for long-horizon vision-language-action policies.</p></div>
+    </section>
+
+    <section id="method" class="tinted-section">
+      <div class="section-width">
+        <div class="section-heading"><p class="eyebrow">02 / Method</p><h2>Three components.<br>One control interface.</h2><p>Retarget the motion. Organize the data. Learn stable tracking.</p></div>
+        <figure class="figure-card"><a class="zoomable" href="assets/method.webp" data-figure aria-label="Enlarge the method diagram"><img src="assets/method.webp" alt="Framework diagram showing DWR retargeting, MCE data organization and GMMT teacher learning and student distillation." loading="lazy" width="1800" height="940"></a><figcaption>The Wheeled-WBC training and deployment pipeline.</figcaption></figure>
+        <div class="component-grid">
+          <article><span class="component-index">01 — DWR</span><h3>Bridge the embodiment gap</h3><p>Decoupled Wheeled Retargeting preserves upper-body configurations while mapping human locomotion intent to the mobile base and lower body.</p><a href="#retargeting">Retargeting in practice <span aria-hidden="true">↗</span></a></article>
+          <article><span class="component-index">02 — MCE</span><h3>Organize manipulation coverage</h3><p>Manipulation Coverage Embedding represents task-space motion to guide teacher specialization and balanced sampling during student distillation.</p><a href="#coverage">Explore data coverage <span aria-hidden="true">↗</span></a></article>
+          <article><span class="component-index">03 — GMMT</span><h3>Track with stability</h3><p>General Mobile Manipulation Tracking combines base residual regularization and temporal error consistency, with progressive teacher-to-student control transfer.</p><a href="#results">See tracking results <span aria-hidden="true">↗</span></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="retargeting" class="section-width split-section">
+      <div class="section-heading"><p class="eyebrow">Preserving motion intent</p><h2>Human references.<br>Robot-aware motion.</h2><p>DWR separates upper-body retargeting from lower-body motion generation, preserving hand relationships while reducing compensatory movement.</p><p class="small-text">Comparison with GMR on Sharpa North, using locomotion and teleoperation references.</p></div>
+      <figure class="figure-card"><a href="assets/retargeting.webp" data-figure class="zoomable" aria-label="Enlarge retargeting comparison"><img src="assets/retargeting.webp" alt="Human motion references compared with GMR and DWR retargeting on Sharpa North." loading="lazy" width="2400" height="1066"></a></figure>
+    </section>
+
+    <section id="results" class="section-width results-section">
+      <div class="section-heading"><p class="eyebrow">03 / Evaluation</p><h2>Precise tracking.<br>A steadier mobile base.</h2><p>Selected cross-embodiment results on unseen RoMo test motions.</p></div>
+      <div class="table-scroll" role="region" aria-label="Cross-embodiment results" tabindex="0">
+        <table><thead><tr><th scope="col">Method</th><th scope="col">Success ↑<span>%</span></th><th scope="col">Wrist position ↓<span>cm</span></th><th scope="col">Base ADE ↓<span>m</span></th><th scope="col">Base heading ↓<span>degrees</span></th></tr></thead>
+        <tbody><tr><th scope="row">GMT</th><td>35.03</td><td>71.06</td><td>0.64</td><td>23.39</td></tr><tr><th scope="row">SONIC v1.1</th><td>54.46</td><td>33.83</td><td>0.31</td><td>3.99</td></tr><tr><th scope="row">Humanoid-GPT</th><td>52.55</td><td>37.12</td><td>0.34</td><td>5.08</td></tr><tr class="ours"><th scope="row">Wheeled-WBC <span>Ours</span></th><td>92.36</td><td>16.11</td><td>0.02</td><td>1.93</td></tr></tbody></table>
+      </div>
+      <p class="small-text">Baselines use Unitree G1 with GMR; Wheeled-WBC uses Sharpa North with DWR. These measurements compare the complete systems. ADE: average displacement error.</p>
+      <div id="coverage" class="coverage-layout">
+        <figure class="figure-card"><a href="assets/coverage.webp" data-figure class="zoomable" aria-label="Enlarge manipulation coverage results"><img src="assets/coverage.webp" alt="Three plots comparing marginal dispersion, effective rank versus mean variance, and total frames across motion datasets." loading="lazy" width="1192" height="784"></a></figure>
+        <div><p class="eyebrow">A broader motion vocabulary</p><h3>Coverage in manipulation space</h3><p>MotionMillion, RoMo, BONES-SEED, and in-house optical motion capture contribute a diverse set of references. MCE organizes these motions for teacher learning and balanced distillation.</p><p>The embedding statistics characterize the resulting distribution’s breadth and structural diversity.</p></div>
+      </div>
+    </section>
+
+    <section id="demos" class="tinted-section">
+      <div class="section-width">
+        <div class="section-heading"><p class="eyebrow">04 / On the robot</p><h2>From motion tracking<br>to everyday tasks.</h2><p>One control framework across sensing devices, motion sources, and downstream policies.</p></div>
+        <div class="demo-grid">
+          <article class="demo-card"><span class="demo-number">01</span><h3>Cross-device teleoperation</h3><p>Inertial and optical motion capture drive coordinated whole-body manipulation.</p><span class="media-status">Demonstration video forthcoming</span></article>
+          <article class="demo-card"><span class="demo-number">02</span><h3>Text-to-motion execution</h3><p>Generated human motions become executable references through DWR.</p><span class="media-status">Demonstration video forthcoming</span></article>
+          <article class="demo-card"><span class="demo-number">03</span><h3>Long-horizon manipulation</h3><p>Collected demonstrations support a VLA policy across sequential kitchen tasks.</p><span class="media-status">Demonstration video forthcoming</span></article>
+        </div>
+        <figure class="figure-card task-figure"><a href="assets/tasks.webp" data-figure class="zoomable" aria-label="Enlarge long-horizon task sequences"><img src="assets/tasks.webp" alt="Representative stages of oatmeal preparation, milk retrieval, and oatmeal serving performed by a VLA policy trained on Wheeled-WBC demonstrations." loading="lazy" width="2400" height="1163"></a><figcaption>Oatmeal preparation · Milk retrieval · Oatmeal serving</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="resources" class="section-width resources-section">
+      <div class="section-heading"><p class="eyebrow">05 / Resources</p><h2>Build on Wheeled-WBC.</h2><p>Paper, code, and citation details will be added here when released.</p></div>
+      <div class="resource-grid"><div><h3>Paper &amp; code</h3><p>Release links forthcoming.</p></div><div><h3>Citation</h3><p>The finalized author list and BibTeX entry will appear with the paper.</p></div><div><h3>Project updates</h3><a href="https://github.com/Wheeled-WBC" target="_blank" rel="noopener noreferrer">Wheeled-WBC on GitHub ↗</a></div></div>
+    </section>
+  </main>
+  <footer class="section-width"><a class="wordmark" href="#">Wheeled-WBC</a><p>Project-page structure inspired by <a href="https://umi-on-legs.github.io/" target="_blank" rel="noopener noreferrer">UMI on Legs</a>.<br>Original website implementation. Figures from the Wheeled-WBC manuscript.</p><a href="#">Back to top ↑</a></footer>
+  <dialog id="figure-dialog" aria-label="Enlarged figure"><button class="dialog-close" type="button" aria-label="Close enlarged figure">Close ×</button><img alt=""><p class="dialog-caption"></p></dialog>
+</body>
+</html>
