@@ -21,23 +21,12 @@ if (figureDialog && typeof figureDialog.showModal === 'function') {
   });
 }
 
-// Respect reduced motion and provide a visible fallback if autoplay is blocked.
+// Respect reduced motion without displaying playback controls.
 const heroVideo = document.querySelector('#hero-video');
-const videoToggle = document.querySelector('.video-toggle');
-if (heroVideo && videoToggle) {
+if (heroVideo) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const syncVideoButton = () => { videoToggle.textContent = heroVideo.paused ? 'Play video' : 'Pause video'; };
-  videoToggle.hidden = false;
-  heroVideo.addEventListener('play', syncVideoButton);
-  heroVideo.addEventListener('pause', syncVideoButton);
-  const startVideo = () => heroVideo.play().catch(syncVideoButton);
   if (reducedMotion.matches) heroVideo.pause();
-  else startVideo();
-  syncVideoButton();
-  videoToggle.addEventListener('click', () => {
-    if (heroVideo.paused) startVideo();
-    else heroVideo.pause();
-  });
+  else heroVideo.play().catch(() => {});
   reducedMotion.addEventListener('change', event => { if (event.matches) heroVideo.pause(); });
 }
 
@@ -61,3 +50,17 @@ if ('IntersectionObserver' in window) {
   demoVideos.forEach(video => { loadObserver.observe(video); playObserver.observe(video); });
 } else { demoVideos.forEach(loadDemo); }
 demoReducedMotion.addEventListener('change', event => { if (event.matches) demoVideos.forEach(video => video.pause()); });
+
+// Clicking or pressing Space/Enter still controls playback without visible UI.
+document.querySelectorAll('video').forEach(video => {
+  video.tabIndex = 0;
+  const togglePlayback = () => {
+    loadDemo(video);
+    if (video.paused) video.play().catch(() => {});
+    else video.pause();
+  };
+  video.addEventListener('click', togglePlayback);
+  video.addEventListener('keydown', event => {
+    if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); togglePlayback(); }
+  });
+});
