@@ -37,3 +37,8 @@
 /* Keep autonomous demonstrations compact and centered. */
 #autonomy .video-grid{width:100%;max-width:800px;margin-inline:auto;gap:28px}
 @media(max-width:540px){#autonomy .video-grid{gap:20px 12px}}
+
+/* Four clips per row for both motion-capture systems. */
+#teleoperation .teleop-group{max-width:none}
+#teleoperation .video-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:540px){#teleoperation .video-grid{gap:8px}}
