@@ -33,3 +33,7 @@
 .method-summary{max-width:890px;margin:28px auto 0;color:var(--muted);font-size:16px;line-height:1.8}
 @media(max-width:900px){.task-grid,.text-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.text-grid figcaption{min-height:130px}}
 @media(max-width:540px){.two-column{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}.video-card figcaption{font-size:13px;min-height:58px;padding-inline:0}.text-grid{grid-template-columns:1fr}.text-grid figcaption{min-height:0;padding:0 0 12px;font-size:15px}.teleop-group>h3{font-size:21px}.video-card .demo-video{border-radius:5px}}
+
+/* Keep autonomous demonstrations compact and centered. */
+#autonomy .video-grid{width:100%;max-width:800px;margin-inline:auto;gap:28px}
+@media(max-width:540px){#autonomy .video-grid{gap:20px 12px}}
