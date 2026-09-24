@@ -50,17 +50,3 @@ if ('IntersectionObserver' in window) {
   demoVideos.forEach(video => { loadObserver.observe(video); playObserver.observe(video); });
 } else { demoVideos.forEach(loadDemo); }
 demoReducedMotion.addEventListener('change', event => { if (event.matches) demoVideos.forEach(video => video.pause()); });
-
-// Clicking or pressing Space/Enter still controls playback without visible UI.
-document.querySelectorAll('video').forEach(video => {
-  video.tabIndex = 0;
-  const togglePlayback = () => {
-    loadDemo(video);
-    if (video.paused) video.play().catch(() => {});
-    else video.pause();
-  };
-  video.addEventListener('click', togglePlayback);
-  video.addEventListener('keydown', event => {
-    if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); togglePlayback(); }
-  });
-});
