@@ -16,7 +16,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><a class="wordmark" href="#">Wheeled-WBC<span aria-hidden="true">.</span></a><nav aria-label="Main navigation"><a href="#abstract">Abstract</a><a href="#simulation">Experiments</a></nav></header>
+<header class="site-header"><a class="wordmark" href="#">Wheeled-WBC<span aria-hidden="true">.</span></a><nav aria-label="Main navigation"><a href="#simulation">Experiments</a></nav></header>
 <main id="main">
   <section class="hero video-hero" aria-labelledby="hero-title">
     <video controls id="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/posters/intro-v2.jpg" aria-label="Wheeled-WBC opening video">
@@ -26,7 +26,6 @@
     <h1 id="hero-title" class="visually-hidden">Wheeled-WBC: Manipulation-Oriented Whole-Body Control for Wheeled Humanoid Robots</h1>
   </section>
   <div class="paper-link"><a class="button" href="https://wheeled-wbc.github.io/" aria-label="arXiv (temporary link to project homepage)">↗ arXiv</a></div>
-  <section id="abstract" class="abstract-section"><div class="abstract-inner"><h2>Abstract</h2><p>Wheeled-base humanoid robots require controllers that bridge embodiment gaps, balance manipulation coverage, and stabilize dextrous mobile manipulation. We present Wheeled-WBC, a manipulation-oriented whole-body control framework trained on over <strong>210</strong> hours of human motion. Decoupled Wheeled Retargeting preserves locomotion intent and upper-body precision. Manipulation Coverage Embedding guides task-space teacher partitioning and balanced distillation. General Mobile Manipulation Tracking regularizes base residuals and end-effector error consistency, distilling privileged teachers into a unified Transformer policy via DAgger with progressive control transfer. Controlled same-embodiment ablations show that all three components contribute to tracking performance. Across systems' native embodiments and retargeting pipelines, Wheeled-WBC achieves <strong>92.36%</strong> end-to-end success on unseen motions. On Sharpa North, it tracks unseen motion-capture and text-to-motion references and supports dextrous mobile teleoperation. Collected demonstrations support long-horizon autonomous policies.</p></div></section>
   <div class="experiments">
 <section id="simulation" class="experiment section-width"><div class="section-heading"><h2>Massive Training in Simulation</h2></div><div class="video-grid single-video">
 <figure class="video-card"><figcaption>Massive Training in Simulation</figcaption><video controls class="demo-video" muted loop playsinline preload="none" poster="assets/posters/simulation.jpg" aria-label="Massive Training in Simulation"><source data-src="assets/videos/simulation.mp4" type="video/mp4">Your browser does not support embedded video.</video><noscript><a href="assets/videos/simulation.mp4">Watch video</a></noscript></figure>
